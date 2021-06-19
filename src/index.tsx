@@ -24,8 +24,12 @@ export interface TextareaAutosizeProps extends Omit<TextareaProps, 'style'> {
   style?: Style;
 }
 
+export interface TextareaAutosizeMethods {
+  forceCalcSize: () => void;
+}
+
 const TextareaAutosize: React.ForwardRefRenderFunction<
-  HTMLTextAreaElement,
+  HTMLTextAreaElement & TextareaAutosizeMethods,
   TextareaAutosizeProps
 > = (
   {
@@ -36,7 +40,7 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
     onHeightChange = noop,
     ...props
   },
-  userRef: React.Ref<HTMLTextAreaElement>,
+  userRef: React.Ref<TextareaAutosizeMethods>,
 ) => {
   if (process.env.NODE_ENV !== 'production' && props.style) {
     if ('maxHeight' in props.style) {
@@ -52,9 +56,21 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
   }
   const isControlled = props.value !== undefined;
   const libRef = React.useRef<HTMLTextAreaElement | null>(null);
-  const ref = useComposedRef(libRef, userRef);
+  const ref = useComposedRef(libRef as any, userRef as any);
   const heightRef = React.useRef(0);
   const measurementsCacheRef = React.useRef<SizingData>();
+
+  React.useImperativeHandle(userRef, () => ({
+    forceCalcSize: () => {
+      resizeTextarea();
+    },
+    focus: () => {
+      libRef.current!.focus();
+    },
+    setSelectionRange: (start: number, end: number) => {
+      libRef.current!.setSelectionRange(start, end);
+    },
+  }));
 
   const resizeTextarea = () => {
     const node = libRef.current!;

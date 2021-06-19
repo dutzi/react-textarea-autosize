@@ -1,7 +1,7 @@
 {
-  "name": "react-textarea-autosize",
+  "name": "@notdutzi/react-textarea-autosize",
   "description": "textarea component for React which grows with content",
-  "version": "8.3.3",
+  "version": "8.3.5",
   "keywords": [
     "autosize",
     "grow",
@@ -9,19 +9,24 @@
     "react-component",
     "textarea"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Andarist/react-textarea-autosize.git"
   },
   "license": "MIT",
-  "main": "dist/react-textarea-autosize.cjs.js",
-  "module": "dist/react-textarea-autosize.esm.js",
+  "main": "dist/notdutzi-react-textarea-autosize.cjs.js",
+  "module": "dist/notdutzi-react-textarea-autosize.esm.js",
   "browser": {
-    "./dist/react-textarea-autosize.cjs.js": "./dist/react-textarea-autosize.browser.cjs.js",
-    "./dist/react-textarea-autosize.esm.js": "./dist/react-textarea-autosize.browser.esm.js"
+    "./dist/notdutzi-react-textarea-autosize.cjs.js": "./dist/notdutzi-react-textarea-autosize.browser.cjs.js",
+    "./dist/notdutzi-react-textarea-autosize.esm.js": "./dist/notdutzi-react-textarea-autosize.browser.esm.js"
   },
   "sideEffects": false,
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": "Andrey Popp <8mayday@gmail.com> (httsps://andreypopp.com/)",
   "contributors": [
     "Mateusz Burzyński <mateuszburzynski@gmail.com> (https://github.com/Andarist)"
