@@ -1,7 +1,7 @@
 {
   "name": "@notdutzi/react-textarea-autosize",
   "description": "textarea component for React which grows with content",
-  "version": "8.3.5",
+  "version": "8.3.6",
   "keywords": [
     "autosize",
     "grow",
@@ -32,6 +32,8 @@
     "Mateusz Burzyński <mateuszburzynski@gmail.com> (https://github.com/Andarist)"
   ],
   "scripts": {
+    "preyalc": "npm version prerelease --preid=\"yalc\" --no-git-tag-version",
+    "yalc": "yalc publish",
     "prebuild": "npm run clean",
     "build": "preconstruct build",
     "docs:dev": "npm run dev --prefix example",
