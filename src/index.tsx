@@ -27,6 +27,7 @@ export interface TextareaAutosizeProps extends Omit<TextareaProps, 'style'> {
 export interface TextareaAutosizeMethods {
   forceCalcSize: () => void;
   getSelectionStart: () => number | undefined;
+  getSelectionEnd: () => number | undefined;
 }
 
 const TextareaAutosize: React.ForwardRefRenderFunction<
@@ -67,6 +68,9 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
     },
     getSelectionStart: () => {
       return libRef.current?.selectionStart;
+    },
+    getSelectionEnd: () => {
+      return libRef.current?.selectionEnd;
     },
     focus: () => {
       libRef.current!.focus();
